@@ -20,4 +20,4 @@ It's going to learn 4chan threads
 
 Licensed patentable.
 
-it should work idk
+it should work
