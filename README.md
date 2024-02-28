@@ -14,6 +14,10 @@ I didn't like that USE has no decoder or ChatGPT. I wrote my own. I'm not wanted
 
 You can also forego the decoder and encoder and do straight data-to-data, the first and last layers would simply to the work of encoding and decoding. The neural net for transformation or what ever would be three layers in total at least.
 
+To get it to work the first time comment out where it says Load model before compiling it, the code builds one, then comment it back in the next run.
+Run with while true; do ./this_script.js; done
+It's going to learn 4chan threads
+
 Licensed patentable.
 
 it should work idk
