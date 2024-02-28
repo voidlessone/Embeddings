@@ -68,12 +68,15 @@ fetch(`https://a.4cdn.org/${BOARD}/threads.json`, {})
 .then(r => r.json())
 .then(json => {
 	var pages = json.map(page => page.threads)
+	var threads = []
 	pages.forEach(page => {
-		console.log(page) // finish here
+		page.forEach(t => {
+			threads.push(t.no);
+		})
 	})
+	var no = choice(threads);
 	
-	
-	var tl = thread_link("vg", "466649081");
+	var tl = thread_link(BOARD, no);
 
 fetch(tl, { } )
 .then(r => r.json())
@@ -97,7 +100,7 @@ fetch(tl, { } )
 		
 		//console.log(ae.dataSync(), be.dataSync());
 		
-		console.log("Training...");
+		console.log("Training e2e...");
 		await tmodel.fit(ae, be, { verbose: false, epochs: 16 })
 		
 		
@@ -122,7 +125,7 @@ fetch(tl, { } )
 	})
 })
 
-/*
+
 var words = fs.readFileSync('wordlist.txt', 'utf8').toString().split("\n");
 var a = words[Math.floor(Math.random()*words.length)-1]
 var b = "how are you";
@@ -134,8 +137,8 @@ const input = tf.tensor([ta])
 // Apply embedding to input 
 const output = embeddingLayer.apply(input); 
 
-console.log("Training coder...");
-await model.fit(output, input, { epochs: 120, verbose: true,  } )
+console.log("Training decoder...");
+await model.fit(output, input, { epochs: 120, verbose: false,  } )
 
 var p = model.predict(output);
 console.log( p.dataSync().map( n => Math.round(n)) )
@@ -149,7 +152,7 @@ output.dispose();
 p.dispose();
 
 
-*/
+
 
 })()
 
